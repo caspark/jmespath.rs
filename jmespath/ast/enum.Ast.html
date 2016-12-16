@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Ast` enum in crate `jmespath`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Ast">
+
+    <title>jmespath::ast::Ast - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>jmespath</a>::<wbr><a href='index.html'>ast</a></p><script>window.sidebarCurrent = {name: 'Ast', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>jmespath</a>::<wbr><a href='index.html'>ast</a>::<wbr><a class='enum' href=''>Ast</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/jmespath/ast.rs.html#25-171' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum Ast {
+    Comparison {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        comparator: <a class='enum' href='../../jmespath/ast/enum.Comparator.html' title='jmespath::ast::Comparator'>Comparator</a>,
+        lhs: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+        rhs: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+    },
+    Condition {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        predicate: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+        then: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+    },
+    Identity {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+    },
+    Expref {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        ast: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+    },
+    Flatten {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        node: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+    },
+    Function {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        name: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>,
+        args: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+    },
+    Field {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        name: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>,
+    },
+    Index {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        idx: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>,
+    },
+    Literal {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        value: <a class='type' href='../../jmespath/type.Rcvar.html' title='jmespath::Rcvar'>Rcvar</a>,
+    },
+    MultiList {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        elements: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+    },
+    MultiHash {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        elements: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../../jmespath/ast/struct.KeyValuePair.html' title='jmespath::ast::KeyValuePair'>KeyValuePair</a>&gt;,
+    },
+    Not {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        node: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+    },
+    Projection {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        lhs: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+        rhs: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+    },
+    ObjectValues {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        node: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+    },
+    And {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        lhs: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+        rhs: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+    },
+    Or {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        lhs: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+        rhs: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+    },
+    Slice {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        start: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>&gt;,
+        stop: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>&gt;,
+        step: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>,
+    },
+    Subexpr {
+        offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+        lhs: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+        rhs: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;,
+    },
+}</pre><div class='docblock'><p>A JMESPath expression abstract syntax tree.</p>
+</div><h2 class='variants'>Variants</h2>
+<span id='variant.Comparison' class='variant'><span id='Comparison.v' class='invisible'><code>Comparison</code></span></span><div class='docblock'><p>Compares two nodes using a comparator, returning true/false.</p>
+</div><span class='docblock autohide sub-variant' id='variant.Comparison.fields'><h3 class='fields'>Fields of <code>Comparison</code></h3>
+
+                           <table><tr><td id='variant.Comparison.field.offset'><span id='Comparison.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.Comparison.field.comparator'><span id='Comparison.v.comparator.v' class='invisible'><code>comparator:&nbsp;<a class='enum' href='../../jmespath/ast/enum.Comparator.html' title='jmespath::ast::Comparator'>Comparator</a></code></span></td><td><div class='docblock'><p>Comparator that compares the two results</p>
+</div></td></tr><tr><td id='variant.Comparison.field.lhs'><span id='Comparison.v.lhs.v' class='invisible'><code>lhs:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Left hand side of the comparison</p>
+</div></td></tr><tr><td id='variant.Comparison.field.rhs'><span id='Comparison.v.rhs.v' class='invisible'><code>rhs:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Right hand side of the comparison</p>
+</div></td></tr></table></span><span id='variant.Condition' class='variant'><span id='Condition.v' class='invisible'><code>Condition</code></span></span><div class='docblock'><p>If <code>predicate</code> evaluates to a truthy value, returns the
+result <code>then</code></p>
+</div><span class='docblock autohide sub-variant' id='variant.Condition.fields'><h3 class='fields'>Fields of <code>Condition</code></h3>
+
+                           <table><tr><td id='variant.Condition.field.offset'><span id='Condition.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.Condition.field.predicate'><span id='Condition.v.predicate.v' class='invisible'><code>predicate:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>The predicate to test.</p>
+</div></td></tr><tr><td id='variant.Condition.field.then'><span id='Condition.v.then.v' class='invisible'><code>then:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>The node to traverse if the predicate is truthy.</p>
+</div></td></tr></table></span><span id='variant.Identity' class='variant'><span id='Identity.v' class='invisible'><code>Identity</code></span></span><div class='docblock'><p>Returns the current node.</p>
+</div><span class='docblock autohide sub-variant' id='variant.Identity.fields'><h3 class='fields'>Fields of <code>Identity</code></h3>
+
+                           <table><tr><td id='variant.Identity.field.offset'><span id='Identity.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr></table></span><span id='variant.Expref' class='variant'><span id='Expref.v' class='invisible'><code>Expref</code></span></span><div class='docblock'><p>Used by functions to dynamically evaluate argument values.</p>
+</div><span class='docblock autohide sub-variant' id='variant.Expref.fields'><h3 class='fields'>Fields of <code>Expref</code></h3>
+
+                           <table><tr><td id='variant.Expref.field.offset'><span id='Expref.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.Expref.field.ast'><span id='Expref.v.ast.v' class='invisible'><code>ast:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Node to execute</p>
+</div></td></tr></table></span><span id='variant.Flatten' class='variant'><span id='Flatten.v' class='invisible'><code>Flatten</code></span></span><div class='docblock'><p>Evaluates the node, then flattens it one level.</p>
+</div><span class='docblock autohide sub-variant' id='variant.Flatten.fields'><h3 class='fields'>Fields of <code>Flatten</code></h3>
+
+                           <table><tr><td id='variant.Flatten.field.offset'><span id='Flatten.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.Flatten.field.node'><span id='Flatten.v.node.v' class='invisible'><code>node:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Node to execute and flatten</p>
+</div></td></tr></table></span><span id='variant.Function' class='variant'><span id='Function.v' class='invisible'><code>Function</code></span></span><div class='docblock'><p>Function name and a vec or function argument expressions.</p>
+</div><span class='docblock autohide sub-variant' id='variant.Function.fields'><h3 class='fields'>Fields of <code>Function</code></h3>
+
+                           <table><tr><td id='variant.Function.field.offset'><span id='Function.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.Function.field.name'><span id='Function.v.name.v' class='invisible'><code>name:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></span></td><td><div class='docblock'><p>Function name to invoke.</p>
+</div></td></tr><tr><td id='variant.Function.field.args'><span id='Function.v.args.v' class='invisible'><code>args:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Function arguments.</p>
+</div></td></tr></table></span><span id='variant.Field' class='variant'><span id='Field.v' class='invisible'><code>Field</code></span></span><div class='docblock'><p>Extracts a key by name from a map.</p>
+</div><span class='docblock autohide sub-variant' id='variant.Field.fields'><h3 class='fields'>Fields of <code>Field</code></h3>
+
+                           <table><tr><td id='variant.Field.field.offset'><span id='Field.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.Field.field.name'><span id='Field.v.name.v' class='invisible'><code>name:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></span></td><td><div class='docblock'><p>Field name to extract.</p>
+</div></td></tr></table></span><span id='variant.Index' class='variant'><span id='Index.v' class='invisible'><code>Index</code></span></span><div class='docblock'><p>Extracts an index from a Vec.</p>
+</div><span class='docblock autohide sub-variant' id='variant.Index.fields'><h3 class='fields'>Fields of <code>Index</code></h3>
+
+                           <table><tr><td id='variant.Index.field.offset'><span id='Index.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.Index.field.idx'><span id='Index.v.idx.v' class='invisible'><code>idx:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a></code></span></td><td><div class='docblock'><p>Index to extract</p>
+</div></td></tr></table></span><span id='variant.Literal' class='variant'><span id='Literal.v' class='invisible'><code>Literal</code></span></span><div class='docblock'><p>Resolves to a literal value.</p>
+</div><span class='docblock autohide sub-variant' id='variant.Literal.fields'><h3 class='fields'>Fields of <code>Literal</code></h3>
+
+                           <table><tr><td id='variant.Literal.field.offset'><span id='Literal.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.Literal.field.value'><span id='Literal.v.value.v' class='invisible'><code>value:&nbsp;<a class='type' href='../../jmespath/type.Rcvar.html' title='jmespath::Rcvar'>Rcvar</a></code></span></td><td><div class='docblock'><p>Literal value</p>
+</div></td></tr></table></span><span id='variant.MultiList' class='variant'><span id='MultiList.v' class='invisible'><code>MultiList</code></span></span><div class='docblock'><p>Evaluates to a list of evaluated expressions.</p>
+</div><span class='docblock autohide sub-variant' id='variant.MultiList.fields'><h3 class='fields'>Fields of <code>MultiList</code></h3>
+
+                           <table><tr><td id='variant.MultiList.field.offset'><span id='MultiList.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.MultiList.field.elements'><span id='MultiList.v.elements.v' class='invisible'><code>elements:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Elements of the list</p>
+</div></td></tr></table></span><span id='variant.MultiHash' class='variant'><span id='MultiHash.v' class='invisible'><code>MultiHash</code></span></span><div class='docblock'><p>Evaluates to a map of key value pairs.</p>
+</div><span class='docblock autohide sub-variant' id='variant.MultiHash.fields'><h3 class='fields'>Fields of <code>MultiHash</code></h3>
+
+                           <table><tr><td id='variant.MultiHash.field.offset'><span id='MultiHash.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.MultiHash.field.elements'><span id='MultiHash.v.elements.v' class='invisible'><code>elements:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../../jmespath/ast/struct.KeyValuePair.html' title='jmespath::ast::KeyValuePair'>KeyValuePair</a>&gt;</code></span></td><td><div class='docblock'><p>Elements of the hash</p>
+</div></td></tr></table></span><span id='variant.Not' class='variant'><span id='Not.v' class='invisible'><code>Not</code></span></span><div class='docblock'><p>Evaluates to true/false based on if the expression is not truthy.</p>
+</div><span class='docblock autohide sub-variant' id='variant.Not.fields'><h3 class='fields'>Fields of <code>Not</code></h3>
+
+                           <table><tr><td id='variant.Not.field.offset'><span id='Not.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.Not.field.node'><span id='Not.v.node.v' class='invisible'><code>node:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>node to negate</p>
+</div></td></tr></table></span><span id='variant.Projection' class='variant'><span id='Projection.v' class='invisible'><code>Projection</code></span></span><div class='docblock'><p>Evaluates LHS, and pushes each value through RHS.</p>
+</div><span class='docblock autohide sub-variant' id='variant.Projection.fields'><h3 class='fields'>Fields of <code>Projection</code></h3>
+
+                           <table><tr><td id='variant.Projection.field.offset'><span id='Projection.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.Projection.field.lhs'><span id='Projection.v.lhs.v' class='invisible'><code>lhs:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Left hand side of the projection.</p>
+</div></td></tr><tr><td id='variant.Projection.field.rhs'><span id='Projection.v.rhs.v' class='invisible'><code>rhs:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Right hand side of the projection.</p>
+</div></td></tr></table></span><span id='variant.ObjectValues' class='variant'><span id='ObjectValues.v' class='invisible'><code>ObjectValues</code></span></span><div class='docblock'><p>Evaluates LHS. If it resolves to an object, returns a Vec of values.</p>
+</div><span class='docblock autohide sub-variant' id='variant.ObjectValues.fields'><h3 class='fields'>Fields of <code>ObjectValues</code></h3>
+
+                           <table><tr><td id='variant.ObjectValues.field.offset'><span id='ObjectValues.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.ObjectValues.field.node'><span id='ObjectValues.v.node.v' class='invisible'><code>node:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Node to extract object values from.</p>
+</div></td></tr></table></span><span id='variant.And' class='variant'><span id='And.v' class='invisible'><code>And</code></span></span><div class='docblock'><p>Evaluates LHS. If not truthy returns. Otherwise evaluates RHS.</p>
+</div><span class='docblock autohide sub-variant' id='variant.And.fields'><h3 class='fields'>Fields of <code>And</code></h3>
+
+                           <table><tr><td id='variant.And.field.offset'><span id='And.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.And.field.lhs'><span id='And.v.lhs.v' class='invisible'><code>lhs:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Left hand side of the expression.</p>
+</div></td></tr><tr><td id='variant.And.field.rhs'><span id='And.v.rhs.v' class='invisible'><code>rhs:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Right hand side of the expression.</p>
+</div></td></tr></table></span><span id='variant.Or' class='variant'><span id='Or.v' class='invisible'><code>Or</code></span></span><div class='docblock'><p>Evaluates LHS. If truthy returns. Otherwise evaluates RHS.</p>
+</div><span class='docblock autohide sub-variant' id='variant.Or.fields'><h3 class='fields'>Fields of <code>Or</code></h3>
+
+                           <table><tr><td id='variant.Or.field.offset'><span id='Or.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.Or.field.lhs'><span id='Or.v.lhs.v' class='invisible'><code>lhs:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Left hand side of the expression.</p>
+</div></td></tr><tr><td id='variant.Or.field.rhs'><span id='Or.v.rhs.v' class='invisible'><code>rhs:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Right hand side of the expression.</p>
+</div></td></tr></table></span><span id='variant.Slice' class='variant'><span id='Slice.v' class='invisible'><code>Slice</code></span></span><div class='docblock'><p>Returns a slice of a vec, using start, stop, and step.</p>
+</div><span class='docblock autohide sub-variant' id='variant.Slice.fields'><h3 class='fields'>Fields of <code>Slice</code></h3>
+
+                           <table><tr><td id='variant.Slice.field.offset'><span id='Slice.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.Slice.field.start'><span id='Slice.v.start.v' class='invisible'><code>start:&nbsp;<a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>&gt;</code></span></td><td><div class='docblock'><p>Starting index</p>
+</div></td></tr><tr><td id='variant.Slice.field.stop'><span id='Slice.v.stop.v' class='invisible'><code>stop:&nbsp;<a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>&gt;</code></span></td><td><div class='docblock'><p>Stopping index</p>
+</div></td></tr><tr><td id='variant.Slice.field.step'><span id='Slice.v.step.v' class='invisible'><code>step:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a></code></span></td><td><div class='docblock'><p>Step amount between extractions.</p>
+</div></td></tr></table></span><span id='variant.Subexpr' class='variant'><span id='Subexpr.v' class='invisible'><code>Subexpr</code></span></span><div class='docblock'><p>Evaluates RHS, then provides that value to the evaluation of RHS.</p>
+</div><span class='docblock autohide sub-variant' id='variant.Subexpr.fields'><h3 class='fields'>Fields of <code>Subexpr</code></h3>
+
+                           <table><tr><td id='variant.Subexpr.field.offset'><span id='Subexpr.v.offset.v' class='invisible'><code>offset:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></td><td><div class='docblock'><p>Approximate absolute position in the parsed expression.</p>
+</div></td></tr><tr><td id='variant.Subexpr.field.lhs'><span id='Subexpr.v.lhs.v' class='invisible'><code>lhs:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Left hand side of the expression.</p>
+</div></td></tr><tr><td id='variant.Subexpr.field.rhs'><span id='Subexpr.v.rhs.v' class='invisible'><code>rhs:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>&gt;</code></span></td><td><div class='docblock'><p>Right hand side of the expression.</p>
+</div></td></tr></table></span><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/jmespath/ast.rs.html#24' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class='method'><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class='method'><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/jmespath/ast.rs.html#24' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class='method'><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class='method'><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/jmespath/ast.rs.html#24' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class='method'><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html' title='core::fmt::Display'>Display</a> for <a class='enum' href='../../jmespath/ast/enum.Ast.html' title='jmespath::ast::Ast'>Ast</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/jmespath/ast.rs.html#173-177' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt-1' class='method'><span id='fmt.v-1' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, fmt: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Error.html' title='core::fmt::Error'>Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "jmespath";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
